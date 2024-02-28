@@ -148,6 +148,7 @@ console.log(withdrawals);
 */
 
 // REDUCE Method
+/*
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // accumulator -> SNOWBALL
@@ -165,3 +166,31 @@ const max = movements.reduce(
   movements[0]
 );
 console.log(max);
+*/
+
+// CHAINING Method
+/*
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const eurToUsd = 1.1;
+
+// PIPELINE
+const totalDepositsUSD = movements
+  .filter(mov => mov > 0)
+  .map(mov => mov * eurToUsd)
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(totalDepositsUSD);
+*/
+
+// FIND Method
+/*
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const firstWithdrawal = movements.find(mov => mov < 0);
+console.log(movements);
+console.log(firstWithdrawal);
+
+console.log(accounts);
+
+const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+console.log(account);
+*/
