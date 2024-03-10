@@ -30,6 +30,8 @@ const account4 = {
   pin: 4444,
 };
 
+const accounts = [account1, account2, account3, account4];
+
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /*
@@ -241,10 +243,107 @@ console.log(anyDeposits);
 // EVERY
 console.log(movements.every(mov => mov > 0));
 console.log(account4.movements.every(mov => mov > 0));
-*/
+
 // Seperate callback
 const deposit = mov => mov > 0;
 
 console.log(movements.some(deposit));
 console.log(account4.movements.every(deposit));
 console.log(account4.movements.filter(deposit));
+*/
+
+// FLAT and FLATMAP
+/*
+const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arr.flat());
+
+const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+console.log(arrDeep.flat(2));
+
+// const accountMovements = accounts.map(acc => acc.movements);
+// console.log(accountMovements);
+// const allMovements = accountMovements.flat();
+// console.log(allMovements);
+// const overallBalance = allMovements.reduce((acc, mov) => acc + mov, 0);
+// console.log(overallBalance);
+
+const overallBalance = accounts
+  .map(acc => acc.movements)
+  .flat()
+  .reduce((acc, mov) => acc + mov, 0);
+
+console.log(overallBalance);
+
+const overallBalance2 = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((acc, mov) => acc + mov, 0);
+
+console.log(overallBalance2);
+*/
+
+// SORTING ARRAYS
+/*
+// Strings
+const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
+console.log(owners.sort());
+console.log(owners);
+
+// Numbers
+console.log(movements);
+
+// return < 0 A, B (keep order)
+// return > 0 B, A (switch order)
+
+// Ascending
+
+// movements.sort((a, b) => {
+//   if (a > b) {
+//     return 1;
+//   }
+//   if (a < b) {
+//     return -1;
+//   }
+// });
+// console.log(movements);
+
+movements.sort((a, b) => a - b);
+console.log(movements);
+
+// Descending
+
+// movements.sort((a, b) => {
+//   if (a > b) {
+//     return -1;
+//   }
+//   if (a < b) {
+//     return 1;
+//   }
+// });
+
+movements.sort((a, b) => b - a);
+console.log(movements);
+*/
+
+// Creating and Filling Arrays
+/*
+const arr = [1, 2, 3, 4, 5, 6, 7];
+console.log(new Array(1, 2, 3, 4, 5, 6, 7));
+
+// Empty arrays + fill method
+const x = new Array(7);
+console.log(x);
+// console.log(x.map(() => 5));
+x.fill(1, 3, 5);
+x.fill(1);
+console.log(x);
+
+arr.fill(23, 2, 6);
+console.log(arr);
+
+// Array.from
+const y = Array.from({ length: 7 }, () => 1);
+console.log(y);
+
+const z = Array.from({ length: 7 }, (_, i) => i + 1);
+console.log(z);
+*/
