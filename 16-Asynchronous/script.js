@@ -1,5 +1,7 @@
 'use strict';
 
+var key = config.KEY;
+
 // NEW URL
 // ```https://countries-api-836d.onrender.com/countries/```;
 
@@ -305,7 +307,7 @@ const whereAmI = function () {
     .then(pos => {
       const { latitude: lat, longitude: lng } = pos.coords;
       return fetch(
-        `https://geocode.xyz/${lat},${lng}?geoit=json&auth=598041695628319554759x3151`
+        `https://geocode.xyz/${lat},${lng}?geoit=json&auth=${key}`
       );
     })
     .then(response => {
@@ -347,7 +349,7 @@ const whereAmI = async function () {
 
     // Reverse geocoding
     const resGeo = await fetch(
-      `https://geocode.xyz/${lat},${lng}?geoit=json&auth=598041695628319554759x3151`
+      `https://geocode.xyz/${lat},${lng}?geoit=json&auth=${key}`
     );
     if (!resGeo.ok) throw new Error('Problem getting location data');
     const dataGeo = await resGeo.json();
